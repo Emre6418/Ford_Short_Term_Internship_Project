@@ -1,0 +1,53 @@
+﻿@using MyEvernote.Entities.ValueObjects
+@model RegisterViewModel
+@{
+    ViewBag.Title = "My Evernote Kayıt Sayfası";
+}
+
+<link href="~/Content/login-register.css" rel="stylesheet" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.7.0.min.js"></script>
+
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="card card-container">
+            <h2 class="text-center">Kayıt Formu</h2>
+            <hr />
+
+            <form class="form-signin">
+
+                @Html.ValidationSummary(false)
+            <br />
+
+                @Html.TextBoxFor(model => model.Username, new { @class = "form-control", placeholder = "Kullanıcı adı" })
+                <br />
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", placeholder = "E-posta" })
+                <br />
+
+                @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Şifre", type = "password" })
+                <br />
+
+                @Html.TextBoxFor(model => model.RePassword, new { @class = "form-control", placeholder = "Şifre Tekrar", type = "password" })
+
+                <br />
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Kayıt ol</button>
+            </form><!-- /form -->
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+        </div><!-- /card-container -->
+    </div>
+}
+
+
+<script>
+    $(function () {
+        $("footer").parent().hide(); //footer gizleme
+    });
+</script>

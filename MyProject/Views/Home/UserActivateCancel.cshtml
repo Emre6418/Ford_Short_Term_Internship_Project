@@ -1,0 +1,45 @@
+﻿@using MyEvernote.Entities.Messages
+@model List<ErrorMessageObj>
+@{
+    ViewBag.Title = "Hesap Geçersiz";
+}
+
+<link href="~/Content/login-register.css" rel="stylesheet" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+@using (Html.BeginForm())
+{
+    <div class="container">
+        <div class="card card-container">
+            <h2 class="text-center">Yönlendiriliyorsunuz...</h2>
+            <hr />
+
+            <div class="text-success">
+                <h2><span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;&nbsp;Hesap geçerli değil</h2>
+            </div>
+
+            <hr />
+            <div class="danger">
+                @foreach (ErrorMessageObj err in Model)
+                {
+                    @err.Message<br />
+                }
+            </div>
+            <p class="text-justify"></p>
+
+        </div><!-- /card-container -->
+    </div>
+}
+
+<script>
+    $(function () {
+        $("footer").parent().hide(); //footer gizleme
+
+        setTimeout(function () {
+            window.location = "/Home/Index";
+        }, 5000);
+    });
+</script>
